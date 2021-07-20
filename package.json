@@ -1,0 +1,30 @@
+{
+  "name": "etf-line-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stu01509/ETF-Line-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stu01509/ETF-Line-Bot/issues"
+  },
+  "homepage": "https://github.com/stu01509/ETF-Line-Bot#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "linebot": "^1.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^2.0.12"
+  }
+}
