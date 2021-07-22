@@ -1,6 +1,6 @@
 const UserSchema = require('../database/user');
 const etf = require('../services/etf');
-const etfMessageTemplate = require('../utils/messageTemplate');
+const messageTemplate = require('../utils/messageTemplate');
 
 module.exports = async function onPostBack(event) {
   try {
@@ -14,12 +14,12 @@ module.exports = async function onPostBack(event) {
 
     if (mode === 'all') {
       const etfInfo = await etf.getEtfInfo();
-      const etfMessage = await etfMessageTemplate.etfMessageTemplate('全部 ETF 查詢', etfInfo, Number.parseInt(index, 10));
+      const etfMessage = await messageTemplate.etfMessageTemplate('全部 ETF 查詢', etfInfo, Number.parseInt(index, 10));
       event.reply(etfMessage);
     }
     if (mode === 'investmentTrust') {
       const etfInfo = (await etf.getEtfInfo()).filter((item) => item.b.includes(brand));
-      const etfMessage = await etfMessageTemplate.etfMessageTemplate(`${brand} ETF 查詢`, etfInfo);
+      const etfMessage = await messageTemplate.etfMessageTemplate(`${brand} ETF 查詢`, etfInfo);
       event.reply(etfMessage);
     }
     if (mode === 'etfAdd') {
@@ -42,7 +42,21 @@ module.exports = async function onPostBack(event) {
         event.reply(`您沒有收藏 ${brand} ETF`);
       }
     }
+    if (mode === 'userManual') {
+      if (brand === 'all') {
+        event.reply('點選全部 ETF，即可快速查詢台股約 277 檔的 ETF 股票。');
+      }
+      if (brand === 'investmentTrust') {
+        event.reply('點選投信 ETF 查詢，即可快速查詢各家投信所發行的 ETF 股票。');
+      }
+      if (brand === 'single') {
+        event.reply('直接輸入 ETF 股票代號即可快速進行查詢，並且還能新增到自選股中唷！');
+      }
+      if (brand === 'favorite') {
+        event.reply('直接輸入 ETF 股票代號並點選加入，即可新增至自選股中唷！最多能收藏 25 檔股票。');
+      }
+    }
   } catch (error) {
-    event.reply('目前發生了點問題, 請稍後再試. 😭');
+    event.reply('目前發生了點問題，請稍後再試。 😭');
   }
 };

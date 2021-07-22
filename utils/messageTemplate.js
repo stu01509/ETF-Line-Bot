@@ -353,6 +353,85 @@ const investmentTrustSelectMessage = async () => {
   return message;
 };
 
+const userManualSelectMessage = async () => {
+  const message = {
+    type: 'flex',
+    altText: '使用說明',
+    contents: {
+      type: 'carousel',
+      contents: [{
+        type: 'bubble',
+        header: {
+          type: 'box',
+          layout: 'vertical',
+          contents: [{
+            type: 'text',
+            text: '使用說明',
+            weight: 'bold',
+            size: 'xl',
+          },
+          {
+            type: 'text',
+            text: '請選擇使用說明',
+            weight: 'regular',
+            size: 'md',
+          },
+          {
+            type: 'separator',
+          }],
+        },
+        body: {
+          type: 'box',
+          layout: 'vertical',
+          contents: [{
+            type: 'button',
+            action: {
+              type: 'postback',
+              label: '全部 ETF 查詢',
+              data: 'userManual&all',
+            },
+          }, {
+            type: 'button',
+            action: {
+              type: 'postback',
+              label: 'ETF 投信查詢',
+              data: 'userManual&investmentTrust',
+            },
+          }, {
+            type: 'button',
+            action: {
+              type: 'postback',
+              label: '個股 ETF 查詢',
+              data: 'userManual&single',
+            },
+          }, {
+            type: 'button',
+            action: {
+              type: 'postback',
+              label: '自選股查詢',
+              data: 'userManual&favorite',
+            },
+          }, {
+            type: 'button',
+            action: {
+              type: 'uri',
+              label: 'GitHub',
+              uri: 'https://github.com/stu01509/ETF-Line-Bot',
+            },
+          }],
+        },
+        styles: {
+          header: {
+            separator: true,
+          },
+        },
+      }],
+    },
+  };
+  return message;
+};
+
 module.exports.etfMessageTemplate = etfMessageTemplate;
 module.exports.singleEtfMessageTemplate = singleEtfMessageTemplate;
+module.exports.userManualSelectMessage = userManualSelectMessage;
 module.exports.investmentTrustSelectMessage = investmentTrustSelectMessage;
