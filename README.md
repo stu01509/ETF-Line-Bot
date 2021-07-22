@@ -6,7 +6,7 @@
 
 ETF-Line-Bot 為一款可以即時查詢國內所有 ETF 股票即時淨值的 LINE Bot，提供使用快速掌握 ETF 股票的即時淨值資訊(5 分鐘更新)，也可自行設定自選股，讓你輕鬆得知自己關注的 ETF 標的！
 
-本專案僅為個人為了面試所開發的，沒有任何的營利目的，資料來源自　[TWSE 臺灣證券交易所](https://mis.twse.com.tw/stock/etf_nav.jsp?ex=tse)，對於任何因數據錯誤，資料不正確所引起的任何損失，概不負責，投資一定有風險，股票投資有賺有賠，申購前應詳閱公開說明書！
+本專案僅為個人為了面試所開發的，沒有任何的營利目的，資料來源自[TWSE 臺灣證券交易所](https://mis.twse.com.tw/stock/etf_nav.jsp?ex=tse)，對於任何因數據錯誤，資料不正確所引起的任何損失，概不負責，投資一定有風險，股票投資有賺有賠，申購前應詳閱公開說明書！
 
 ## 功能
 - 📈 查詢台灣股市目前上市上櫃的所有 ETF，目前約 227 檔。
@@ -67,3 +67,10 @@ DB_SSL = USE_SSL_PROTOCOL_TO_CONNECT_DB         # MongoDB 是否使用 SSL 連�
 DB_PATH = DB_ADDRESS                            # MongoDB 連線位置
 
 ```
+
+### 啟動
+
+```Shell
+$ npm run start
+```
+![](./assets/start.gif)
