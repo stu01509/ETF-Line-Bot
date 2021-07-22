@@ -1,4 +1,4 @@
-# ETF-Line-Bot
+# 📈 ETF-Line-Bot
 
 ---
 
