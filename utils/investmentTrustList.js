@@ -1,0 +1,17 @@
+module.exports = [
+  { name: '元大', brand: '元大' },
+  { name: '富邦', brand: '富邦' },
+  { name: '國泰', brand: '國泰' },
+  { name: '復華', brand: 'FH' },
+  { name: '群益', brand: '群益' },
+  { name: '台新', brand: '台新' },
+  { name: '兆豐', brand: '兆豐' },
+  { name: '街口', brand: '街口' },
+  { name: '第一', brand: '第一' },
+  { name: '統一', brand: '統一' },
+  { name: '中信', brand: '中信' },
+  { name: '凱基', brand: '凱基' },
+  { name: '新光', brand: '新光' },
+  { name: '永豐', brand: '永豐' },
+  { name: '富蘭克林美華', brand: 'FT' },
+];
