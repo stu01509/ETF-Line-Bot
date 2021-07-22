@@ -20,6 +20,7 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "linebot": "^1.6.1",
+    "mongoose": "^5.5.15",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
