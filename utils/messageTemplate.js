@@ -1,3 +1,5 @@
+const investmentTrustList = require('./investmentTrustList');
+
 const etfMessageTemplate = async (title, etfData, limit = 0) => {
   const content = [];
   const times = Number.parseInt(limit, 10) + 50;
@@ -145,27 +147,160 @@ const etfMessageTemplate = async (title, etfData, limit = 0) => {
   return message;
 };
 
+const singleEtfMessageTemplate = async (title, etfData) => {
+  // eslint-disable-next-line no-nested-ternary
+  const priceColor = etfData[0].e === etfData[0].f ? '#555555' : (etfData[0].e - etfData[0].f) > 0 ? '#ff0000' : '#008000';
+
+  const message = {
+    type: 'flex',
+    altText: title,
+    contents: {
+      type: 'carousel',
+      contents: [{
+        type: 'bubble',
+        header: {
+          type: 'box',
+          layout: 'vertical',
+          contents: [{
+            type: 'text',
+            text: title,
+            weight: 'bold',
+            size: 'xl',
+          },
+          {
+            type: 'separator',
+          }],
+        },
+        body: {
+          type: 'box',
+          layout: 'vertical',
+          contents: [{
+            type: 'box',
+            layout: 'vertical',
+            margin: 'lg',
+            spacing: 'sm',
+            contents: [{
+              type: 'box',
+              layout: 'baseline',
+              spacing: 'sm',
+              contents: [{
+                type: 'text',
+                text: etfData[0].a,
+                color: '#111111',
+                size: 'sm',
+              },
+              {
+                type: 'text',
+                text: etfData[0].b.substring(0, 19),
+                wrap: true,
+                color: '#111111',
+                size: 'sm',
+              }],
+            },
+            {
+              type: 'box',
+              layout: 'baseline',
+              spacing: 'sm',
+              contents: [{
+                type: 'text',
+                text: '市價',
+                color: '#777777',
+                size: 'sm',
+              },
+              {
+                type: 'text',
+                text: etfData[0].e.toString(),
+                wrap: true,
+                color: '#555555',
+                size: 'sm',
+              },
+              {
+                type: 'text',
+                text: '淨值',
+                color: '#777777',
+                size: 'sm',
+              },
+              {
+                type: 'text',
+                text: etfData[0].f.toString(),
+                wrap: true,
+                color: '#555555',
+                size: 'sm',
+              }],
+            },
+            {
+              type: 'box',
+              layout: 'baseline',
+              spacing: 'sm',
+              contents: [{
+                type: 'text',
+                text: '折溢價',
+                color: '#777777',
+                size: 'sm',
+              },
+              {
+                type: 'text',
+                text: (etfData[0].e - etfData[0].f).toFixed(4).toString() || '',
+                wrap: true,
+                color: priceColor,
+                size: 'sm',
+              },
+              {
+                type: 'text',
+                text: '折溢%',
+                color: '#777777',
+                size: 'sm',
+              },
+              {
+                type: 'text',
+                text: `${etfData[0].g}%` || '',
+                wrap: true,
+                color: priceColor,
+                size: 'sm',
+              }],
+            },
+            {
+              type: 'separator',
+            }],
+          }],
+        },
+        footer: {
+          type: 'box',
+          layout: 'horizontal',
+          contents: [
+            {
+              type: 'button',
+              action: {
+                type: 'postback',
+                label: '加入',
+                data: `etfAdd&${etfData[0].a}`,
+              },
+            },
+            {
+              type: 'button',
+              action: {
+                type: 'postback',
+                label: '移除',
+                data: `etfRemove&${etfData[0].a}`,
+              },
+            },
+          ],
+        },
+        styles: {
+          header: {
+            separator: true,
+          },
+        },
+      }],
+    },
+  };
+  return message;
+};
+
 const investmentTrustSelectMessage = async () => {
-  const INVESTMENT_TRUST_LIST = [
-    { name: '元大', brand: '元大' },
-    { name: '富邦', brand: '富邦' },
-    { name: '國泰', brand: '國泰' },
-    { name: '復華', brand: 'FH' },
-    { name: '群益', brand: '群益' },
-    { name: '台新', brand: '台新' },
-    { name: '兆豐', brand: '兆豐' },
-    { name: '街口', brand: '街口' },
-    { name: '第一', brand: '第一' },
-    { name: '統一', brand: '統一' },
-    { name: '中信', brand: '中信' },
-    { name: '凱基', brand: '凱基' },
-    { name: '新光', brand: '新光' },
-    { name: '永豐', brand: '永豐' },
-    { name: '富蘭克林美華', brand: 'FT' },
-  ];
   const content = [];
 
-  INVESTMENT_TRUST_LIST.forEach((investmentTrust) => {
+  investmentTrustList.forEach((investmentTrust) => {
     content.push({
       type: 'button',
       action: {
@@ -219,4 +354,5 @@ const investmentTrustSelectMessage = async () => {
 };
 
 module.exports.etfMessageTemplate = etfMessageTemplate;
+module.exports.singleEtfMessageTemplate = singleEtfMessageTemplate;
 module.exports.investmentTrustSelectMessage = investmentTrustSelectMessage;
