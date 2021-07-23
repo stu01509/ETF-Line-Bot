@@ -44,7 +44,7 @@ module.exports = async function onPostBack(event) {
     }
     if (mode === 'userManual') {
       if (brand === 'all') {
-        event.reply('點選全部 ETF，即可快速查詢台股約 277 檔的 ETF 股票。');
+        event.reply('點選全部 ETF，即可快速查詢台股約 227 檔的 ETF 股票。');
       }
       if (brand === 'investmentTrust') {
         event.reply('點選投信 ETF 查詢，即可快速查詢各家投信所發行的 ETF 股票。');
