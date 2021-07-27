@@ -1,5 +1,15 @@
 const investmentTrustList = require('./investmentTrustList');
 
+const getPriceColor = (marketPrice, netValue) => {
+  if (marketPrice === netValue) {
+    return '#555555';
+  }
+  if (marketPrice - netValue > 0) {
+    return '#ff0000';
+  }
+  return '#008000';
+};
+
 const etfMessageTemplate = async (title, etfData, limit = 0) => {
   const content = [];
   const times = Number.parseInt(limit, 10) + 50;
@@ -148,9 +158,6 @@ const etfMessageTemplate = async (title, etfData, limit = 0) => {
 };
 
 const singleEtfMessageTemplate = async (title, etfData) => {
-  // eslint-disable-next-line no-nested-ternary
-  const priceColor = etfData[0].e === etfData[0].f ? '#555555' : (etfData[0].e - etfData[0].f) > 0 ? '#ff0000' : '#008000';
-
   const message = {
     type: 'flex',
     altText: title,
@@ -242,7 +249,7 @@ const singleEtfMessageTemplate = async (title, etfData) => {
                 type: 'text',
                 text: (etfData[0].e - etfData[0].f).toFixed(4).toString() || '',
                 wrap: true,
-                color: priceColor,
+                color: getPriceColor(etfData[0].e, etfData[0].f),
                 size: 'sm',
               },
               {
@@ -255,7 +262,7 @@ const singleEtfMessageTemplate = async (title, etfData) => {
                 type: 'text',
                 text: `${etfData[0].g}%` || '',
                 wrap: true,
-                color: priceColor,
+                color: getPriceColor(etfData[0].e, etfData[0].f),
                 size: 'sm',
               }],
             },
