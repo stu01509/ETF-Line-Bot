@@ -6,7 +6,7 @@ module.exports = async function onFollow(event) {
       try {
         const { userId } = event.source;
         const { displayName, statusMessage, pictureUrl } = profile;
-        const isUserExist = await UserSchema.findOne({ userId }).select('-_id favoriteEtf').exec();
+        const isUserExist = await UserSchema.findOne({ userId }).exec();
         if (!isUserExist) {
           const insertUserData = new UserSchema({
             userId,
