@@ -1,4 +1,5 @@
 # 📈 ETF-Line-Bot
+![Deploy Status](https://github.com/stu01509/ETF-Line-Bot/actions/workflows/main_TW-ETF-Line-Bot.yml/badge.svg)
 
 ---
 
@@ -9,19 +10,22 @@ ETF-Line-Bot 為一款可以即時查詢國內所有 ETF 股票即時淨值的 L
 本專案僅為個人為了面試所開發的，沒有任何的營利目的，資料來源自[TWSE 臺灣證券交易所](https://mis.twse.com.tw/stock/etf_nav.jsp?ex=tse)，對於任何因數據錯誤，資料不正確所引起的任何損失，概不負責，投資一定有風險，股票投資有賺有賠，申購前應詳閱公開說明書！
 
 ## 功能
+
 - 📈 查詢台灣股市目前上市上櫃的所有 ETF，目前約 227 檔。
 - 🏦 查詢各大投信所發行的 ETF 股票。
 - 🔍 ETF 股票代號查詢，輸入股票代號即可查詢。
 - 🔖 ETF 自選股標的的新增或刪除，最多可以儲存 25 檔。
 
 ## Demo
+
 新增為 LINE 好友: [https://line.me/R/ti/p/@623wmicb](https://line.me/R/ti/p/@623wmicb)
 
 QR Code:
 
-![](./assets/qr.png)
+![QR Code](./assets/qr.png)
 
 ## 專案目錄
+
 ```
 .
 ├── assets                      # LINE Bot 所使用到的圖檔素材
@@ -73,4 +77,5 @@ DB_PATH = DB_ADDRESS                            # MongoDB 連線位置
 ```Shell
 $ npm run start
 ```
-![](./assets/start.gif)
+
+![Start](./assets/start.gif)
