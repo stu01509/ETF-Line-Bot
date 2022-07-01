@@ -1,0 +1,13 @@
+name: Health Check
+
+on:
+  schedule:
+    - cron: "* */1 * * *"
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Health Check
+        run: curl https://tw-etf-line-bot.azurewebsites.net

@@ -1,5 +1,6 @@
 # 📈 ETF-Line-Bot
 ![Deploy Status](https://github.com/stu01509/ETF-Line-Bot/actions/workflows/main_TW-ETF-Line-Bot.yml/badge.svg)
+![Health Status](https://github.com/stu01509/ETF-Line-Bot/actions/workflows/health_check.yml/badge.svg)
 
 ---
 
