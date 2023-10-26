@@ -17,12 +17,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+      - name: Init - Set up yarn environment
+        run: npm install -g yarn
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install dependencies
+        run: yarn
+
+      - name: Unit Test
+        run: yarn test
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r

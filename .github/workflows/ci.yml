@@ -12,13 +12,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Init - Set up yarn environment
         run: npm install -g yarn
+
       - name: Install dependencies
         run: yarn
+
       - name: Unit Test
         run: yarn test
