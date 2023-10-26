@@ -55,7 +55,7 @@ QR Code:
 ```Shell
 $ git clone git@github.com:stu01509/ETF-Line-Bot.git
 $ cd ETF-Line-Bot
-$ npm install
+$ yarn
 
 ```
 
@@ -76,7 +76,7 @@ DB_PATH = DB_ADDRESS                            # MongoDB 連線位置
 ### 啟動
 
 ```Shell
-$ npm run start
+$ yarn start
 ```
 
 ![Start](./assets/start.gif)
