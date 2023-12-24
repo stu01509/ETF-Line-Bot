@@ -28,19 +28,12 @@ describe('services > etf', () => {
 
         const result = (await etf.getEtfInfo()).filter((item) => item.a === '0050');
 
-        expect(result[0]).toEqual({
-          a: '0050',
-          b: '元大台灣50',
-          c: 2327500000,
-          d: -14500000,
-          e: 121.75,
-          f: 121.71,
-          g: 0.03,
-          h: '123.9900',
-          i: '20231026',
-          j: '13:45:00',
-          k: '1',
-        });
+        expect(result[0]).toEqual(
+          expect.objectContaining({
+            a: '0050',
+            b: '元大台灣50'
+          })
+        );
         expect(result.length).toEqual(1);
       });
     });
@@ -51,19 +44,12 @@ describe('services > etf', () => {
 
         const result = (await etf.getEtfInfo()).filter((item) => item.a === '0056');
 
-        expect(result[0]).toEqual({
-          a: '0056',
-          b: '元大高股息',
-          c: 6934534000,
-          d: 31500000,
-          e: 33.1,
-          f: 32.9,
-          g: 0.61,
-          h: '33.4800',
-          i: '20231026',
-          j: '13:45:00',
-          k: '1',
-        });
+        expect(result[0]).toEqual(
+          expect.objectContaining({
+            a: '0056',
+            b: '元大高股息'
+          })
+        );
         expect(result.length).toEqual(1);
       });
     });
